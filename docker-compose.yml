@@ -4,11 +4,13 @@ services:
     build: es
     volumes:
         - es-data:/usr/share/elasticsearch/data
-        - ./es/config:/usr/share/elasticsearch/config
+          #- ./es/config:/usr/share/elasticsearch/config
     ports:
         - 9200:9200
     expose:
         - 9300
+    environment:
+        - ES_JAVA_OPTS=-Xms400m -Xmx400m
     ulimits:
         nofile:
             soft: 65536
